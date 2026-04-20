@@ -3,15 +3,21 @@
 # Part 1
 
 def sum arr
-  # YOUR CODE HERE
+  arr.sum
 end
 
 def max_2_sum arr
-  # YOUR CODE HERE
+  if arr.empty? then return 0 end
+  if arr.length == 1 then return arr[0] end
+  sorted = arr.sort { |a, b| b <=> a }
+  sorted[0] + sorted[1]
 end
 
 def sum_to_n? arr, n
-  # YOUR CODE HERE
+  arr.combination(2) do |comb|
+    if comb.sum == n then return true end
+  end
+  false
 end
 
 # Part 2
