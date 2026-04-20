@@ -7,15 +7,15 @@ def sum arr
 end
 
 def max_2_sum arr
-  if arr.empty? then return 0 end
-  if arr.length == 1 then return arr[0] end
+  return 0 if arr.empty?
+  return arr[0] if arr.length == 1
   sorted = arr.sort { |a, b| b <=> a }
   sorted[0] + sorted[1]
 end
 
 def sum_to_n? arr, n
   arr.combination(2) do |comb|
-    if comb.sum == n then return true end
+    return true if comb.sum == n
   end
   false
 end
@@ -23,19 +23,29 @@ end
 # Part 2
 
 def hello(name)
-  # YOUR CODE HERE
+  "Hello, #{name}"
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  s.downcase =~ /^[qwrtypsdfghjklzxcvbnm].*/
 end
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+  s =~ /^([01]*00|0)$/
 end
 
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+  attr_accessor :isbn, :price
+
+  def initialize (isbn, price)
+    raise ArgumentError if isbn.empty? || price <= 0
+    @isbn = isbn
+    @price = price
+  end
+
+  def price_as_string
+    "$%.2f" % @price
+  end
 end
